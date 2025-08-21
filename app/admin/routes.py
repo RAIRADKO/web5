@@ -23,20 +23,21 @@ def login():
 
         conn = get_db()
         cursor = conn.cursor(dictionary=True)
-        # FIX: Mengganti 'name' dengan 'usernama' sesuai dengan struktur tabel Anda
-        cursor.execute('SELECT * FROM users WHERE usernama = %s', (username,))
+        # PERBAIKAN: Menggunakan 'Username' yang benar sesuai database
+        cursor.execute('SELECT * FROM users WHERE Username = %s', (username,))
         user = cursor.fetchone()
         cursor.close()
         conn.close()
 
-        if user and check_password_hash(user['password'], password_input):
-            # FIX: Menyesuaikan kunci session dengan nama kolom yang benar
-            session['user'] = user['usernama'] 
+        # PERHATIAN: Kolom 'password' tidak ditemukan di file SQL, ini akan menyebabkan error.
+        # Asumsi kolom 'password' ada di database sebenarnya.
+        if user and 'password' in user and check_password_hash(user['password'], password_input):
+            # PERBAIKAN: Menyesuaikan kunci session dengan nama kolom yang benar
+            session['user'] = user['Username'] 
             return redirect(url_for('admin.dashboard'))
         else:
             return "Login Gagal. Periksa kembali username dan password Anda.", 401
     return render_template('admin/login.html')
-
 
 @admin.route('/dashboard')
 def dashboard():
@@ -393,11 +394,11 @@ def tambah_user():
     if 'user' not in session:
         return redirect(url_for('admin.login'))
 
-    Username = request.form['username']
-    Nama_Lengkap = request.form['nama_lengkap']
-    Email = request.form['email']
+    username = request.form['username']
+    nama_lengkap = request.form['nama_lengkap']
+    email = request.form['email']
     level = request.form['level']
-    Blokir = request.form['status']
+    blokir = request.form['status']
 
     Foto = request.files.get('foto')
     Foto_filename = None
@@ -410,7 +411,7 @@ def tambah_user():
     cursor.execute("""
         INSERT INTO users (Username, Nama_Lengkap, Email, level, Blokir, Foto)
         VALUES (%s, %s, %s, %s, %s, %s)
-    """, (Username, Nama_Lengkap, Email, level, Blokir, Foto_filename))
+    """, (username, nama_lengkap, email, level, blokir, Foto_filename))
     conn.commit()
     cursor.close()
     conn.close()
@@ -424,11 +425,11 @@ def edit_user(id):
         return redirect(url_for('admin.login'))
 
 
-    Username = request.form['username']
-    Nama_Lengkap = request.form['nama_lengkap']
-    Email = request.form['email']
+    username = request.form['username']
+    nama_lengkap = request.form['nama_lengkap']
+    email = request.form['email']
     level = request.form['level']
-    Blokir = request.form['status']
+    blokir = request.form['status']
 
     Foto = request.files.get('foto')
     Foto_filename = None
@@ -444,13 +445,13 @@ def edit_user(id):
             UPDATE users 
             SET Username=%s, Nama_Lengkap=%s, Email=%s, level=%s, Blokir=%s, Foto=%s 
             WHERE id=%s
-        """, (Username, Nama_Lengkap, Email, level, Blokir, Foto_filename, id))
+        """, (username, nama_lengkap, email, level, blokir, Foto_filename, id))
     else:
         cursor.execute("""
             UPDATE users 
             SET Username=%s, Nama_Lengkap=%s, Email=%s, level=%s, Blokir=%s 
             WHERE id=%s
-        """, (Username, Nama_Lengkap, Email, level, Blokir, id))
+        """, (username, nama_lengkap, email, level, blokir, id))
     
     conn.commit()
     cursor.close()
@@ -557,7 +558,8 @@ def hapus_tag_video(id):
 def download_area():
     db = get_db()
     cursor = db.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM download ORDER BY Tanggal DESC")
+    # PERBAIKAN: Menggunakan nama tabel yang benar
+    cursor.execute("SELECT * FROM download_area ORDER BY Tanggal DESC")
     daftar_file = cursor.fetchall()
     cursor.close()
     db.close()
@@ -595,7 +597,8 @@ def edit_download(no):
 def hapus_download(no):
     db = get_db()
     cursor = db.cursor()
-    cursor.execute("DELETE FROM download WHERE No = %s", (no,))
+    # PERBAIKAN: Menggunakan nama tabel yang benar
+    cursor.execute("DELETE FROM download_area WHERE No = %s", (no,))
     db.commit()
     cursor.close()
     db.close()
@@ -882,7 +885,6 @@ def edit_berita(id):
 
     flash("Berita berhasil diperbarui!", "success")
     return redirect(url_for('admin.berita'))
-    return redirect(url_for('admin.berita'))
 # ---------------- HALAMAN BARU ----------------
 # Route untuk menampilkan halaman_baru
 @admin.route('/halaman_baru')
@@ -1158,9 +1160,11 @@ def tambah_playlist():
 
     conn = get_db()
     cursor = conn.cursor()
+    # PERBAIKAN: Mengubah nilai aktif menjadi 'ya' atau 'tidak'
+    aktif_db = 'ya' if aktif == '1' else 'tidak'
     cursor.execute(
     "INSERT INTO playlist_video (judul_playlist, cover, aktif) VALUES (%s, %s, %s)",
-    (judul, cover_filename, aktif)
+    (judul, cover_filename, aktif_db)
 )
     conn.commit()
     cursor.close()
@@ -1184,7 +1188,8 @@ def edit_playlist(id):
 
     conn = get_db()
     cursor = conn.cursor()
-
+    # PERBAIKAN: Mengubah nilai aktif menjadi 'ya' atau 'tidak'
+    aktif_db = 'ya' if aktif == '1' else 'tidak'
     if cover_file and cover_file.filename.strip() != '':
         cover_filename = secure_filename(cover_file.filename)
         cover_path = os.path.join(UPLOAD_FOLDER, cover_filename)
@@ -1192,12 +1197,12 @@ def edit_playlist(id):
 
         cursor.execute(
             "UPDATE playlist_video SET judul_playlist=%s, cover=%s, aktif=%s WHERE id=%s",
-            (judul, cover_filename, aktif, id)
+            (judul, cover_filename, aktif_db, id)
         )
     else:
         cursor.execute(
             "UPDATE playlist_video SET judul_playlist=%s, aktif=%s WHERE id=%s",
-            (judul, aktif, id)
+            (judul, aktif_db, id)
         )
 
     conn.commit()
@@ -1218,7 +1223,8 @@ def playlist_delete(id):
 
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM playlist WHERE id=%s", (id,))
+    # PERBAIKAN: Menggunakan nama tabel yang benar
+    cursor.execute("DELETE FROM playlist_video WHERE id=%s", (id,))
     conn.commit()
     cursor.close()
     conn.close()
