@@ -12,7 +12,7 @@ def get_db():
         host='localhost',
         user='root',
         password='',
-        database='web_kominfo'
+        database='web_kominfo1'
     )
 
 @admin.route('/login', methods=['GET', 'POST'])
