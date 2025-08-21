@@ -3,406 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Admin</title>
+    <title>Kelola Berita</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .scrollbar-hidden::-webkit-scrollbar {
-        display: none;
-      }
-    </style>
-  </head>
-  <body class="flex min-h-screen bg-gray-100 font-sans">
-    <!-- Sidebar -->
-    <aside class="w-150 bg-gray-900 text-white flex-shrink-0">
-      <div class="p-6 flex items-center gap-3">
-        <img
-          src="https://via.placeholder.com/40"
-          class="rounded-full"
-          alt="logo"
-        />
-        <div>
-          <div class="font-bold text-lg">ADMIN</div>
-          <div class="text-green-400 text-sm">Online</div>
-        </div>
-      </div>
-      <nav class="mt-4 text-sm">
-        <ul class="space-y-2">
-          <li>
-            <a href="#" class="flex items-center px-4 py-2 bg-blue-700 rounded">
-              <span class="mr-2">📊</span> Dashboard
-              <span class="ml-auto text-xs bg-red-500 text-white rounded px-2"
-                >Welcome</span
-              >
-            </a>
-          </li>
 
-          <!-- Menu Utama -->
-          <li>
-            <button
-              onclick="toggleSubmenu('menuUtamaSub', 'icon-menuUtamaSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Menu Utama
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="menuUtamaSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a
-                  href="identitas_website.html"
-                  class="block py-1 hover:underline"
-                  >Identitas Website</a
-                >
-              </li>
-              <li>
-                <a href="menu_website.html" class="block py-1 hover:underline"
-                  >Menu Website</a
-                >
-              </li>
-              <li>
-                <a href="halaman_baru.html" class="block py-1 hover:underline"
-                  >Halaman Baru</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Berita -->
-          <li>
-            <button
-              onclick="toggleSubmenu('beritaSubmenu', 'icon-berita')"
-              class="w-full text-left flex items-center px-4 py-2 hover:bg-gray-700 rounded focus:outline-none"
-            >
-              Modul Berita
-              <svg
-                id="icon-berita"
-                class="ml-auto w-4 h-4 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-            <ul id="beritaSubmenu" class="pl-8 space-y-1 text-sm hidden">
-              <li>
-                <a href="berita.html" class="block py-1 hover:underline"
-                  >Berita</a
-                >
-              </li>
-              <li>
-                <a
-                  href="kategori_berita.html"
-                  class="block py-1 hover:underline"
-                  >Kategori</a
-                >
-              </li>
-              <li>
-                <a href="tag_berita.html" class="block py-1 hover:underline"
-                  >Tag</a
-                >
-              </li>
-              <li>
-                <a
-                  href="komentar_berita.html"
-                  class="block py-1 hover:underline"
-                  >Komentar</a
-                >
-              </li>
-              <li>
-                <a
-                  href="sensor_komentar.html"
-                  class="block py-1 hover:underline"
-                  >Sensor Komentar</a
-                >
-              </li>
-              <li>
-                <a href="berita_foto.html" class="block py-1 hover:underline"
-                  >Berita Foto</a
-                >
-              </li>
-              <li>
-                <a
-                  href="galeri_berita_foto.html"
-                  class="block py-1 hover:underline"
-                  >Galeri Berita Foto</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Video -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulVideoSub', 'icon-ModulVideoSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Video
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="ModulVideoSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a href="playlist_video.html" class="block py-1 hover:underline"
-                  >Playlist Video</a
-                >
-              </li>
-              <li>
-                <a href="video.html" class="block py-1 hover:underline"
-                  >Video</a
-                >
-              </li>
-              <li>
-                <a href="tag_video.html" class="block py-1 hover:underline"
-                  >Tag Video</a
-                >
-              </li>
-              <li>
-                <a href="komentar_video.html" class="block py-1 hover:underline"
-                  >Komentar Video</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Iklan -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulIklanSub', 'icon-ModulIklanSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Iklan
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="ModulIklanSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a href="iklan_atas.html" class="block py-1 hover:underline"
-                  >Iklan Atas</a
-                >
-              </li>
-              <li>
-                <a href="iklan_home.html" class="block py-1 hover:underline"
-                  >Iklan Home</a
-                >
-              </li>
-              <li>
-                <a href="iklan_sidebar.html" class="block py-1 hover:underline"
-                  >Iklan Sidebar</a
-                >
-              </li>
-              <li>
-                <a href="iklan_link.html" class="block py-1 hover:underline"
-                  >Iklan Link</a
-                >
-              </li>
-              <li>
-                <a href="widget.html" class="block py-1 hover:underline"
-                  >Widget</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Web -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulWebSub', 'icon-ModulWebSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Web
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="ModulWebSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a href="logo_website.html" class="block py-1 hover:underline"
-                  >Logo Website</a
-                >
-              </li>
-              <li>
-                <a
-                  href="tamplate_website.html"
-                  class="block py-1 hover:underline"
-                  >Tamplate Website</a
-                >
-              </li>
-              <li>
-                <a
-                  href="background_website.html"
-                  class="block py-1 hover:underline"
-                  >Background Website</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Interaksi -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulInteraksiSub', 'icon-ModulInteraksiSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Interaksi
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul
-              id="ModulInteraksiSub"
-              class="pl-8 text-gray-300 space-y-1 hidden"
-            >
-              <li>
-                <a href="agenda_admin.html" class="block py-1 hover:underline"
-                  >Agenda</a
-                >
-              </li>
-              <li>
-                <a href="sekilas_info.html" class="block py-1 hover:underline"
-                  >Sekilas Info</a
-                >
-              </li>
-              <li>
-                <a href="jejak_pendapat.html" class="block py-1 hover:underline"
-                  >Jejak Pendapat</a
-                >
-              </li>
-              <li>
-                <a href="download_area.html" class="block py-1 hover:underline"
-                  >Download Area</a
-                >
-              </li>
-              <li>
-                <a href="alamat_kontak.html" class="block py-1 hover:underline"
-                  >Alamat Kontak</a
-                >
-              </li>
-              <li>
-                <a href="pesan_masuk.html" class="block py-1 hover:underline"
-                  >Pesan Masuk</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <li class="px-4 text-gray-400 uppercase text-xs mt-4">USER MENU</li>
-
-                    <!-- Modul Users -->
-                    <li>
-                        <button
-                            onclick="toggleSubmenu('usersSubmenu', 'icon-user')"
-                            class="w-full text-left flex items-center px-4 py-2 hover:bg-gray-700 rounded focus:outline-none"
-                        >
-                            Modul Users
-                            <svg
-                                id="icon-user"
-                                class="ml-auto w-4 h-4 transition-transform"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M19 9l-7 7-7-7"
-                                ></path>
-                            </svg>
-                        </button>
-                        <ul id="usersSubmenu" class="pl-8 space-y-1 text-sm hidden">
-                            <li>
-                                <a href="manajemen_users.html" class="block py-1 hover:underline">Manajemen User</a>
-                            </li>
-                                 <a href="manajemen_modul.html" class="block py-1 hover:underline">Manajemen Model</a>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a
-                            href="#"
-                            class="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-                            >Logout</a
-                        >
-                    </li>
-                </ul>
-            </nav>
-    </aside>
-
-    <!-- Main Content -->
-
-<meta charset="UTF-8" />
-    <title>Dashboard Admin - Berita</title>
+    <!-- Bootstrap CSS & Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -413,113 +19,378 @@
     />
   </head>
   <body>
+    {% include "admin/sidebar.html" %}
+
     <div class="container mt-4">
-      <h3>Dashboard</h3>
+      <h3>Berita</h3>
+
       <div class="card mt-3">
-        <div class="card-header">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Semua Berita</h5>
-            <a href="/tambah" class="btn btn-primary btn-sm">Tambahkan Data</a>
-          </div>
+        <div
+          class="card-header d-flex justify-content-between align-items-center"
+        >
+          <h5 class="mb-0">Daftar Berita</h5>
+          <button
+            class="btn btn-primary btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#modalTambah"
+          >
+            Tambah Data
+          </button>
         </div>
+
         <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="d-flex align-items-center">
-              Show
-              <select
-                class="form-select form-select-sm mx-2"
-                style="width: auto"
-              >
-                <option>10</option>
-                <option>25</option>
-                <option>50</option>
-              </select>
-              entries
-            </div>
-            <div>
-              <input
-                type="search"
-                class="form-control form-control-sm"
-                placeholder="Search..."
-              />
-            </div>
+          <!-- Search Bar -->
+          <div class="mb-3 d-flex justify-content-end">
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control form-control-sm w-auto"
+              placeholder="Cari judul..."
+              onkeyup="filterTable()"
+            />
           </div>
 
-             <div class="table-responsive">
-              <table class="table table-bordered table-striped table-sm">
-                <thead class="table-light">
-                  <tr>
-                    <th>No</th>
-                    <th>Judul Berita</th>
-                    <th>Tanggal</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <tr>
-                    <td>1</td>
-                    <td>[HOAKS] Video Batik Air Tergelincir di Kota Yogyakarta pada Februari 2025</td>
-                    <td>28 Feb 2025</td>
-                    <td><span style="color: green">Published</span></td>
-                    <td>
-                      <a href="/lihat/{{ row.id }}" class="btn btn-sm btn-primary" title="Lihat">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="/edit/{{ row.id }}" class="btn btn-sm btn-success" title="Edit">
-                        <i class="bi bi-pencil-fill"></i>
-                      </a>
-                      <a href="/delete/{{ row.id }}" class="btn btn-sm btn-danger" title="Hapus" onclick="return confirm('Yakin ingin menghapus data ini?');">
-                        <i class="bi bi-trash-fill"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <div>Showing 1 to 10 of ... entries</div>
-              <nav>
-                <ul class="pagination pagination-sm mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">…</a></li>
-                  <li class="page-item"><a class="page-link" href="#">10</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
+          <div class="table-responsive">
+            <table
+              id="beritaTable"
+              class="table table-bordered table-striped table-sm"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th>No</th>
+                  <th>Judul</th>
+                  <th>Kategori</th>
+                  <th>Tanggal</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for berita in daftar_berita %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ berita.judul }}</td>
+                  <td>{{ berita.kategori }}</td>
+                  <td>{{ berita.tanggal }}</td>
+                  <td>
+                    {% if berita.status == 'publish' %}
+                    <span class="badge bg-success">Publish</span>
+                    {% else %}
+                    <span class="badge bg-secondary">Draft</span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-sm"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalEdit"
+                      data-id="{{ berita.id }}"
+                      data-judul="{{ berita.judul }}"
+                      data-sub_judul="{{ berita.sub_judul }}"
+                      data-video_youtube="{{ berita.video_youtube }}"
+                      data-kategori="{{ berita.kategori }}"
+                      data-headline="{{ berita.headline }}"
+                      data-berita_utama="{{ berita.berita_utama }}"
+                      data-isi_berita="{{ berita.isi_berita|e }}"
+                      data-tag="{{ berita.tag }}"
+                      data-tanggal="{{ berita.tanggal }}"
+                      data-waktu_posting="{{ berita.waktu_posting }}"
+                      data-status="{{ berita.status }}"
+                      onclick="setEditData(this)"
+                    >
+                      Edit
+                    </button>
+                    <form
+                      method="POST"
+                      action="{{ url_for('admin.hapus_berita', id=berita.id) }}"
+                      style="display: inline"
+                      onsubmit="return confirm('Yakin ingin menghapus berita ini?');"
+                    >
+                      <button type="submit" class="btn btn-danger btn-sm">
+                        Hapus
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-
-     <!-- Footer -->
-       </div>
-      <footer class="mt-8 text-center text-sm text-gray-500">
-        <p>
-          Copyright © 2014-2025
-          <a href="#" class="text-blue-700 font-semibold">Dinas Komunikasi, Informatika, Statistik dan Persandian Kabupaten Purworejo </a>.
-          All rights reserved.Version 3.0.0
-        </p>
-      </footer>
-    </main>
     </div>
 
+    <!-- Modal Tambah Berita -->
+    <div class="modal fade" id="modalTambah" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form
+            action="{{ url_for('admin.tambah_berita') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="modal-header">
+              <h5 class="modal-title">Tambah Data</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Form Fields -->
+              <div class="mb-3">
+                <label>Judul</label>
+                <input type="text" name="judul" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label>Sub Judul</label>
+                <input type="text" name="sub_judul" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label>Video YouTube</label>
+                <input type="text" name="video_youtube" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label>Kategori</label>
+                <input type="text" name="kategori" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label>Headline</label>
+                <input type="text" name="headline" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label>Berita Utama</label>
+                <textarea name="berita_utama" class="form-control"></textarea>
+              </div>
+              <div class="mb-3">
+                <label>Isi Berita</label>
+                <textarea name="isi_berita" class="form-control"></textarea>
+              </div>
+              <div class="mb-3">
+                <label>Gambar</label>
+                <input type="file" name="gambar" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label>Tag</label>
+                <input type="text" name="tag" class="form-control" />
+              </div>
+              <div class="mb-3 row">
+                <div class="col">
+                  <label>Tanggal</label>
+                  <input
+                    type="date"
+                    name="tanggal"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="col">
+                  <label>Waktu Posting</label>
+                  <input
+                    type="time"
+                    name="waktu_posting"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label>Status</label>
+                <select name="status" class="form-control">
+                  <option value="draft">Draft</option>
+                  <option value="publish">Publish</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Batal
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit Berita -->
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form id="formEdit" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="edit-id" name="id" />
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Data</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Sama dengan form tambah, tapi pakai id="edit-..." -->
+              <div class="mb-3">
+                <label>Judul</label>
+                <input
+                  type="text"
+                  id="edit-judul"
+                  name="judul"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label>Sub Judul</label>
+                <input
+                  type="text"
+                  id="edit-sub_judul"
+                  name="sub_judul"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label>Video YouTube</label>
+                <input
+                  type="text"
+                  id="edit-video_youtube"
+                  name="video_youtube"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label>Kategori</label>
+                <input
+                  type="text"
+                  id="edit-kategori"
+                  name="kategori"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label>Headline</label>
+                <input
+                  type="text"
+                  id="edit-headline"
+                  name="headline"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label>Berita Utama</label>
+                <textarea
+                  id="edit-berita_utama"
+                  name="berita_utama"
+                  class="form-control"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label>Isi Berita</label>
+                <textarea
+                  id="edit-isi_berita"
+                  name="isi_berita"
+                  class="form-control"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label>Gambar</label>
+                <input type="file" name="gambar" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label>Tag</label>
+                <input
+                  type="text"
+                  id="edit-tag"
+                  name="tag"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3 row">
+                <div class="col">
+                  <label>Tanggal</label>
+                  <input
+                    type="date"
+                    id="edit-tanggal"
+                    name="tanggal"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="col">
+                  <label>Waktu Posting</label>
+                  <input
+                    type="time"
+                    id="edit-waktu_posting"
+                    name="waktu_posting"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label>Status</label>
+                <select id="edit-status" name="status" class="form-control">
+                  <option value="draft">Draft</option>
+                  <option value="publish">Publish</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Batal
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script -->
     <script>
-      function toggleSubmenu(id, iconId) {
-        const submenu = document.getElementById(id);
-        const icon = document.getElementById(iconId);
-        submenu.classList.toggle("hidden");
-        icon.classList.toggle("rotate-180");
+      function setEditData(button) {
+        document.getElementById("edit-id").value = button.dataset.id;
+        document.getElementById("edit-judul").value = button.dataset.judul;
+        document.getElementById("edit-sub_judul").value =
+          button.dataset.sub_judul;
+        document.getElementById("edit-video_youtube").value =
+          button.dataset.video_youtube;
+        document.getElementById("edit-kategori").value =
+          button.dataset.kategori;
+        document.getElementById("edit-headline").value =
+          button.dataset.headline;
+        document.getElementById("edit-berita_utama").value =
+          button.dataset.berita_utama;
+        document.getElementById("edit-isi_berita").value =
+          button.dataset.isi_berita;
+        document.getElementById("edit-tag").value = button.dataset.tag;
+        document.getElementById("edit-tanggal").value = button.dataset.tanggal;
+        document.getElementById("edit-waktu_posting").value =
+          button.dataset.waktu_posting;
+        document.getElementById("edit-status").value = button.dataset.status;
+        document.getElementById("formEdit").action =
+          "/admin/berita/edit/" + button.dataset.id;
+      }
+
+      function filterTable() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let rows = document.querySelectorAll("#beritaTable tbody tr");
+        rows.forEach((row) => {
+          let title = row.cells[1].innerText.toLowerCase();
+          row.style.display = title.includes(input) ? "" : "none";
+        });
       }
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

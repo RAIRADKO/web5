@@ -3,406 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .scrollbar-hidden::-webkit-scrollbar {
-        display: none;
-      }
-    </style>
-  </head>
-  <body class="flex min-h-screen bg-gray-100 font-sans">
-    <!-- Sidebar -->
-    <aside class="w-150 bg-gray-900 text-white flex-shrink-0">
-      <div class="p-6 flex items-center gap-3">
-        <img
-          src="https://via.placeholder.com/40"
-          class="rounded-full"
-          alt="logo"
-        />
-        <div>
-          <div class="font-bold text-lg">ADMIN</div>
-          <div class="text-green-400 text-sm">Online</div>
-        </div>
-      </div>
-      <nav class="mt-4 text-sm">
-        <ul class="space-y-2">
-          <li>
-            <a href="#" class="flex items-center px-4 py-2 bg-blue-700 rounded">
-              <span class="mr-2">📊</span> Dashboard
-              <span class="ml-auto text-xs bg-red-500 text-white rounded px-2"
-                >Welcome</span
-              >
-            </a>
-          </li>
-
-          <!-- Menu Utama -->
-          <li>
-            <button
-              onclick="toggleSubmenu('menuUtamaSub', 'icon-menuUtamaSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Menu Utama
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="menuUtamaSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a
-                  href="identitas_website.html"
-                  class="block py-1 hover:underline"
-                  >Identitas Website</a
-                >
-              </li>
-              <li>
-                <a href="menu_website.html" class="block py-1 hover:underline"
-                  >Menu Website</a
-                >
-              </li>
-              <li>
-                <a href="halaman_baru.html" class="block py-1 hover:underline"
-                  >Halaman Baru</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Berita -->
-          <li>
-            <button
-              onclick="toggleSubmenu('beritaSubmenu', 'icon-berita')"
-              class="w-full text-left flex items-center px-4 py-2 hover:bg-gray-700 rounded focus:outline-none"
-            >
-              Modul Berita
-              <svg
-                id="icon-berita"
-                class="ml-auto w-4 h-4 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-            <ul id="beritaSubmenu" class="pl-8 space-y-1 text-sm hidden">
-              <li>
-                <a href="berita.html" class="block py-1 hover:underline"
-                  >Berita</a
-                >
-              </li>
-              <li>
-                <a
-                  href="kategori_berita.html"
-                  class="block py-1 hover:underline"
-                  >Kategori</a
-                >
-              </li>
-              <li>
-                <a href="tag_berita.html" class="block py-1 hover:underline"
-                  >Tag</a
-                >
-              </li>
-              <li>
-                <a
-                  href="komentar_berita.html"
-                  class="block py-1 hover:underline"
-                  >Komentar</a
-                >
-              </li>
-              <li>
-                <a
-                  href="sensor_komentar.html"
-                  class="block py-1 hover:underline"
-                  >Sensor Komentar</a
-                >
-              </li>
-              <li>
-                <a href="berita_foto.html" class="block py-1 hover:underline"
-                  >Berita Foto</a
-                >
-              </li>
-              <li>
-                <a
-                  href="galeri_berita_foto.html"
-                  class="block py-1 hover:underline"
-                  >Galeri Berita Foto</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Video -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulVideoSub', 'icon-ModulVideoSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Video
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="ModulVideoSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a href="playlist_video.html" class="block py-1 hover:underline"
-                  >Playlist Video</a
-                >
-              </li>
-              <li>
-                <a href="video.html" class="block py-1 hover:underline"
-                  >Video</a
-                >
-              </li>
-              <li>
-                <a href="tag_video.html" class="block py-1 hover:underline"
-                  >Tag Video</a
-                >
-              </li>
-              <li>
-                <a href="komentar_video.html" class="block py-1 hover:underline"
-                  >Komentar Video</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Iklan -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulIklanSub', 'icon-ModulIklanSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Iklan
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="ModulIklanSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a href="iklan_atas.html" class="block py-1 hover:underline"
-                  >Iklan Atas</a
-                >
-              </li>
-              <li>
-                <a href="iklan_home.html" class="block py-1 hover:underline"
-                  >Iklan Home</a
-                >
-              </li>
-              <li>
-                <a href="iklan_sidebar.html" class="block py-1 hover:underline"
-                  >Iklan Sidebar</a
-                >
-              </li>
-              <li>
-                <a href="iklan_link.html" class="block py-1 hover:underline"
-                  >Iklan Link</a
-                >
-              </li>
-              <li>
-                <a href="widget.html" class="block py-1 hover:underline"
-                  >Widget</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Web -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulWebSub', 'icon-ModulWebSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Web
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul id="ModulWebSub" class="pl-8 text-gray-300 space-y-1 hidden">
-              <li>
-                <a href="logo_website.html" class="block py-1 hover:underline"
-                  >Logo Website</a
-                >
-              </li>
-              <li>
-                <a
-                  href="tamplate_website.html"
-                  class="block py-1 hover:underline"
-                  >Tamplate Website</a
-                >
-              </li>
-              <li>
-                <a
-                  href="background_website.html"
-                  class="block py-1 hover:underline"
-                  >Background Website</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <!-- Modul Interaksi -->
-          <li>
-            <button
-              onclick="toggleSubmenu('ModulInteraksiSub', 'icon-ModulInteraksiSub')"
-              class="w-full flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-            >
-              Modul Interaksi
-              <svg
-                class="ml-auto w-4 h-4 transition-transform"
-                id="icon-menuUtamaSub"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <ul
-              id="ModulInteraksiSub"
-              class="pl-8 text-gray-300 space-y-1 hidden"
-            >
-              <li>
-                <a href="agenda_admin.html" class="block py-1 hover:underline"
-                  >Agenda</a
-                >
-              </li>
-              <li>
-                <a href="sekilas_info.html" class="block py-1 hover:underline"
-                  >Sekilas Info</a
-                >
-              </li>
-              <li>
-                <a href="jejak_pendapat.html" class="block py-1 hover:underline"
-                  >Jejak Pendapat</a
-                >
-              </li>
-              <li>
-                <a href="download_area.html" class="block py-1 hover:underline"
-                  >Download Area</a
-                >
-              </li>
-              <li>
-                <a href="alamat_kontak.html" class="block py-1 hover:underline"
-                  >Alamat Kontak</a
-                >
-              </li>
-              <li>
-                <a href="pesan_masuk.html" class="block py-1 hover:underline"
-                  >Pesan Masuk</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <li class="px-4 text-gray-400 uppercase text-xs mt-4">USER MENU</li>
-
-           <!-- Modul Users -->
-                    <li>
-                        <button
-                            onclick="toggleSubmenu('usersSubmenu', 'icon-user')"
-                            class="w-full text-left flex items-center px-4 py-2 hover:bg-gray-700 rounded focus:outline-none"
-                        >
-                            Modul Users
-                            <svg
-                                id="icon-user"
-                                class="ml-auto w-4 h-4 transition-transform"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M19 9l-7 7-7-7"
-                                ></path>
-                            </svg>
-                        </button>
-                        <ul id="usersSubmenu" class="pl-8 space-y-1 text-sm hidden">
-                            <li>
-                                <a href="manajemen_users.html" class="block py-1 hover:underline">Manajemen User</a>
-                            </li>
-                                 <a href="manajemen_modul.html" class="block py-1 hover:underline">Manajemen Model</a>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a
-                            href="#"
-                            class="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
-                            >Logout</a
-                        >
-                    </li>
-                </ul>
-            </nav>
-    </aside>
-
-    <!-- Main Content -->
-
-<meta charset="UTF-8" />
-    <title>Dashboard Admin - Berita</title>
+    <title>Playlist Video</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -413,111 +14,227 @@
     />
   </head>
   <body>
+    {% include "admin/sidebar.html" %}
+
     <div class="container mt-4">
-      <h3>Dashboard</h3>
+      <h3>Playlist Video</h3>
+
       <div class="card mt-3">
-        <div class="card-header">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Playlist</h5>
-            <a href="/tambah" class="btn btn-primary btn-sm">Tambahkan Data</a>
-          </div>
+        <div
+          class="card-header d-flex justify-content-between align-items-center"
+        >
+          <h5 class="mb-0">Daftar Playlist</h5>
+          <a
+            href="#"
+            class="btn btn-primary btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#modalTambah"
+          >
+            Tambah Playlist
+          </a>
         </div>
+
         <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="d-flex align-items-center">
-              Show
-              <select
-                class="form-select form-select-sm mx-2"
-                style="width: auto"
-              >
-                <option>10</option>
-                <option>25</option>
-                <option>50</option>
-              </select>
-              entries
-            </div>
-            <div>
-              <input
-                type="search"
-                class="form-control form-control-sm"
-                placeholder="Search..."
-              />
-            </div>
+          <!-- Search Bar -->
+          <div class="mb-3 d-flex justify-content-end">
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control form-control-sm w-auto"
+              placeholder="Cari judul playlist..."
+              onkeyup="filterTable()"
+            />
           </div>
 
-             <div class="table-responsive">
-              <table class="table table-bordered table-striped table-sm">
-                <thead class="table-light">
-                  <tr>
-                    <th>No</th>
-                    <th>Cover</th>
-                    <th>Judul Playlist</th>
-                    <th>aktif</th>
-                    <th>action</th>
-                  </tr>
-                </thead>
-                <tbody> 
+          <div class="table-responsive">
+            <table
+              class="table table-bordered table-striped table-sm"
+              id="playlistTable"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th>No</th>
+                  <th>Cover</th>
+                  <th>Judul Playlist</th>
+                  <th>Aktif</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for playlist in daftar_playlist %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>
+                    {% if playlist.cover %}
+                    <img
+                      src="{{ url_for('static', filename='uploads/' ~ playlist.cover) }}"
+                      alt="cover"
+                      width="80"
+                      class="img-thumbnail"
+                    />
+                    {% else %}
+                    <span class="text-muted">Tidak ada</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ playlist.judul_playlist }}</td>
+                  <td>
+                    {% if playlist.status == "Aktif" %}
+                    <span class="badge bg-success">Aktif</span>
+                    {% else %}
+                    <span class="badge bg-secondary">Nonaktif</span>
+                    {% endif %}
+                  </td>
 
-                  <tr>
-                    <td>1</td>
-                    <td><source src="{{ row.cover }}" type="image/webp"></td>
-                    <td>ngobras</td>
-                    <td>Y</td>
-                    <td>
-                      <a href="/edit/{{ row.id }}" class="btn btn-sm btn-success" title="Edit">
-                        <i class="bi bi-pencil-fill"></i>
-                      </a>
-                      <a href="/delete/{{ row.id }}" class="btn btn-sm btn-danger" title="Hapus" onclick="return confirm('Yakin ingin menghapus data ini?');">
-                        <i class="bi bi-trash-fill"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                  <td>
+                    <!-- Tombol Edit -->
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-sm"
+                      data-id="{{ playlist.id }}"
+                      data-judul="{{ playlist.judul_playlist }}"
+                      data-aktif="{{ playlist.aktif }}"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalEdit"
+                      onclick="setEditData(this)"
+                    >
+                      Edit
+                    </button>
 
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <div>Showing 1 to 10 of ... entries</div>
-              <nav>
-                <ul class="pagination pagination-sm mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">…</a></li>
-                  <li class="page-item"><a class="page-link" href="#">10</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
+                    <!-- Tombol Hapus -->
+                    <form
+                      method="POST"
+                      action="{{ url_for('admin.playlist_delete', id=playlist.id) }}"
+                      style="display: inline"
+                      onsubmit="return confirm('Yakin ingin menghapus playlist ini?');"
+                    >
+                      <button type="submit" class="btn btn-danger btn-sm">
+                        Hapus
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-
-      <!-- Footer -->
-
-      </div>
-      <footer class="mt-8 text-center text-sm text-gray-500">
-        </td><p>
-          Copyright © 2014-2025
-          <a href="#" class="text-blue-700 font-semibold">Dinas Komunikasi, Informatika, Statistik dan Persandian Kabupaten Purworejo</a>.
-          All rights reserved.Version 3.0.0
-        </p>
-        <td>
-      </footer>
-    </main>
     </div>
 
+    <!-- Modal Tambah Playlist -->
+    <div class="modal fade" id="modalTambah" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <form
+          method="POST"
+          action="{{ url_for('admin.tambah_playlist') }}"
+          enctype="multipart/form-data"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Tambah Playlist</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Judul Playlist</label>
+                <input type="text" name="judul" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Cover</label>
+                <input type="file" name="cover" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select name="aktif" class="form-select">
+                  <option value="1">Aktif</option>
+                  <option value="0">Nonaktif</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal Edit Playlist -->
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="form-edit" method="POST" enctype="multipart/form-data">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Playlist</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="edit-id" name="id" />
+              <div class="mb-3">
+                <label class="form-label">Judul Playlist</label>
+                <input
+                  type="text"
+                  id="edit-judul"
+                  name="judul"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Cover Baru (Opsional)</label>
+                <input type="file" name="cover" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select id="edit-aktif" name="aktif" class="form-select">
+                  <option value="1">Aktif</option>
+                  <option value="0">Nonaktif</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      function toggleSubmenu(id, iconId) {
-        const submenu = document.getElementById(id);
-        const icon = document.getElementById(iconId);
-        submenu.classList.toggle("hidden");
-        icon.classList.toggle("rotate-180");
+      function setEditData(btn) {
+        document.getElementById("edit-id").value = btn.getAttribute("data-id");
+        document.getElementById("edit-judul").value =
+          btn.getAttribute("data-judul");
+        document.getElementById("edit-aktif").value =
+          btn.getAttribute("data-aktif");
+        document.getElementById("form-edit").action =
+          "/admin/edit_playlist/" + btn.getAttribute("data-id");
+      }
+
+      function filterTable() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toLowerCase();
+        const table = document.getElementById("playlistTable");
+        const trs = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < trs.length; i++) {
+          const td = trs[i].getElementsByTagName("td")[2]; // kolom judul playlist
+          if (td) {
+            const text = td.textContent || td.innerText;
+            trs[i].style.display = text.toLowerCase().includes(filter)
+              ? ""
+              : "none";
+          }
+        }
       }
     </script>
   </body>
